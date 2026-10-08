@@ -1,0 +1,11 @@
+# Copy to .dev.vars for local development (never commit .dev.vars)
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+# 32 random bytes, base64 (node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")
+TOKEN_KEY=
+OWNER_EMAIL=you@techstudiolab.jp
+# Local only: enables /auth/dev?email=… on localhost
+DEV_LOGIN=1
+# Local only: point the Gmail client at the mock server (scripts/mock-gmail.mjs)
+# GMAIL_API_BASE=http://localhost:8790
+# GOOGLE_OAUTH_BASE=http://localhost:8790

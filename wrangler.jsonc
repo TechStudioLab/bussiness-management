@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "techstudiolab-business",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  // The SPA is served from dist/; the Worker answers /api and /auth first
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/auth/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "techstudiolab-business",
+      // Replace with the id printed by: npx wrangler d1 create techstudiolab-business
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // Gmail sync and site checks every 5 minutes
+  "triggers": { "crons": ["*/5 * * * *"] },
+  "routes": [{ "pattern": "business.techstudiolab.jp", "custom_domain": true }],
+  "vars": { "APP_URL": "https://business.techstudiolab.jp" },
+  "observability": { "enabled": true }
+}
